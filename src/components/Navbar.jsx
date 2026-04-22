@@ -32,7 +32,7 @@ function Navbar() {
           <div className="flex items-center justify-between">
             <Link to="/" className="block">
               <img
-                src="/kavim-logo.png"
+                src="/logo.jpeg"
                 alt="Kavim Technologies"
                 className="h-10 w-auto px-2 py-1 sm:h-12"
               />
