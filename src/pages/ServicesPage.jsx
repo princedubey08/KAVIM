@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
 import { AppWindow, Bot, Braces, BriefcaseBusiness, CheckCircle2, FileSearch, Handshake, Search } from 'lucide-react'
+import { Page, Reveal, Stagger } from '../components/Motion'
+import SectionHeader from '../components/SectionHeader'
 
 const steps = [
   { no: '01', title: 'Discovery & Analysis', text: 'Deep-dive consultation to map your workforce needs and growth objectives.', icon: Search },
@@ -19,6 +20,8 @@ const expertise = [
       'E-commerce platform development',
       'Custom web applications',
     ],
+    description:
+      'Engineering-focused web teams built for speed, reliability, and long-term maintainability.',
   },
   {
     title: 'App Development',
@@ -28,6 +31,8 @@ const expertise = [
       'Recruitment portal applications',
       'CRM and workforce management apps',
     ],
+    description:
+      'Premium mobile product squads that deliver polished, gesture-first user experiences at scale.',
   },
   {
     title: 'AI Solutions',
@@ -37,95 +42,114 @@ const expertise = [
       'Resume parsing workflows',
       'AI chatbots for engagement and support',
     ],
+    description:
+      'Data-guided automation and intelligence layers that unlock measurable efficiency gains.',
   },
 ]
 
 function ServicesPage() {
   return (
-    <div className="space-y-14">
-      <section className="rounded-3xl border border-white/10 bg-slate-900 p-8 sm:p-12">
-        <motion.h1
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-black uppercase text-white sm:text-6xl"
-        >
-          Consultative Solutions
-        </motion.h1>
-        <p className="mt-5 max-w-3xl text-lg text-slate-300">
-          Our proven methodology combines industry expertise, rigorous vetting, and
-          personalized service to deliver recruitment outcomes that scale.
-        </p>
-      </section>
+    <Page className="space-y-32">
+      <section className="enterprise-section relative overflow-hidden rounded-[2.5rem] px-6 sm:px-10 lg:px-14">
+        <img
+          src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2200&q=80"
+          alt="Consulting team background texture"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ opacity: 0.04, filter: 'grayscale(20%) sepia(20%)' }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-linear-to-br from-white via-white/95 to-white/85" />
 
-      <section>
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center text-3xl font-black uppercase text-white sm:text-5xl"
-        >
-          The KAVIM Methodology
-        </motion.h2>
-        <p className="mx-auto mt-3 max-w-3xl text-center text-slate-300">
-          A six-phase recruitment process engineered for quality, speed, and long-term retention.
-        </p>
-        <div className="mx-auto mt-3 h-1 w-16 bg-emerald-400" />
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {steps.map((step, index) => (
-            <motion.article
-              key={step.no}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08, duration: 0.45 }}
-              className="rounded-2xl border border-white/10 bg-slate-900 p-6"
-            >
-              <div className="flex items-center justify-between">
-                <p className="text-4xl font-black text-emerald-400">{step.no}</p>
-                <step.icon className="h-7 w-7 text-slate-100" />
-              </div>
-              <h3 className="mt-4 text-2xl font-bold text-white">{step.title}</h3>
-              <p className="mt-3 text-slate-300">{step.text}</p>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+        <div className="relative grid gap-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <Stagger className="max-w-2xl">
+            <Reveal>
+              <p className="enterprise-eyebrow">Services</p>
+            </Reveal>
+            <Reveal>
+              <h1 className="enterprise-h1 mt-4">Consultative solutions for high-trust hiring</h1>
+            </Reveal>
+            <Reveal>
+              <p className="enterprise-body mt-6">
+                A repeatable system for sourcing, vetting, and onboarding talent—built for speed,
+                quality, and long-term retention.
+              </p>
+            </Reveal>
+          </Stagger>
 
-      <section>
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center text-3xl font-black uppercase text-white sm:text-5xl"
-        >
-          Sector Expertise
-        </motion.h2>
-        <p className="mx-auto mt-3 max-w-3xl text-center text-slate-300">
-          Deep domain capabilities across web, mobile, and AI-enabled workforce solutions.
-        </p>
-        <div className="mx-auto mt-3 h-1 w-16 bg-emerald-400" />
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {expertise.map((item, index) => (
-            <motion.article
-              key={item.title}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.45 }}
-              className="rounded-2xl border border-white/10 bg-slate-900 p-7"
-            >
-              <item.icon className="h-9 w-9 text-emerald-400" />
-              <h3 className="mt-4 text-2xl font-bold text-white">{item.title}</h3>
-              <ul className="mt-4 space-y-2 text-slate-300">
-                {item.bullets.map((line) => (
-                  <li key={line}>• {line}</li>
+          <Stagger>
+            <Reveal className="enterprise-card p-8 sm:p-10">
+              <p className="text-sm font-semibold text-slate-900">What you can expect</p>
+              <ul className="mt-5 space-y-3 text-sm text-slate-600">
+                {[
+                  'Clear role definition and pipeline planning',
+                  'Shortlists with fit analysis and interview coordination',
+                  'Onboarding support and continuous follow-through',
+                ].map((line) => (
+                  <li key={line} className="flex gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                    <span>{line}</span>
+                  </li>
                 ))}
               </ul>
-            </motion.article>
+            </Reveal>
+          </Stagger>
+        </div>
+      </section>
+
+      <section className="enterprise-section">
+        <SectionHeader
+          eyebrow="Our process"
+          title="A six-phase methodology engineered for quality"
+          description="A structured recruitment system designed to reduce time-to-hire while protecting consistency and retention."
+          align="center"
+        />
+
+        <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {steps.map((step) => (
+            <Stagger key={step.no}>
+              <Reveal className="enterprise-card enterprise-card-hover p-7">
+                <div className="flex items-center justify-between">
+                  <p className="text-3xl font-extrabold tracking-tight text-emerald-600">{step.no}</p>
+                  <step.icon className="h-6 w-6 text-slate-700" />
+                </div>
+                <h3 className="mt-5 text-xl font-bold tracking-tight text-slate-900">{step.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{step.text}</p>
+              </Reveal>
+            </Stagger>
           ))}
         </div>
       </section>
-    </div>
+
+      <section className="enterprise-section enterprise-surface rounded-[2.5rem] bg-slate-50 px-6 sm:px-10 lg:px-14">
+        <SectionHeader
+          eyebrow="Sector expertise"
+          title="Split delivery for modern teams"
+          description="Clean, focused service capability blocks built around strong typography, icon clarity, and outcome-first messaging."
+        />
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          {expertise.map((item) => (
+            <Stagger key={item.title}>
+              <Reveal className="rounded-3xl border border-slate-100 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <div className="inline-flex rounded-xl bg-emerald-500 p-2.5 text-white">
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-2xl font-extrabold tracking-tighter text-slate-900">{item.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-slate-600">{item.description}</p>
+                <ul className="mt-5 space-y-2.5 text-sm leading-relaxed text-slate-600">
+                  {item.bullets.map((line) => (
+                    <li key={line} className="flex gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </Stagger>
+          ))}
+        </div>
+      </section>
+    </Page>
   )
 }
 

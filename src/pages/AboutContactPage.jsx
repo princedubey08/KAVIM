@@ -1,132 +1,162 @@
-import { motion } from 'framer-motion'
-import { Building2, Link, Mail, MapPin, PhoneCall } from 'lucide-react'
+import { Building2, Link, Mail, PhoneCall } from 'lucide-react'
+import { Page, Reveal, Stagger } from '../components/Motion'
+import HeadquartersSection from '../components/HeadquartersSection'
+import SectionHeader from '../components/SectionHeader'
 
 function AboutContactPage() {
   return (
-    <div className="space-y-12">
-      <section className="rounded-3xl border border-white/10 bg-slate-900 p-8 sm:p-12">
-        <motion.h1
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-black uppercase text-white sm:text-6xl"
-        >
-          Our Journey & DNA
-        </motion.h1>
-        <p className="mt-5 max-w-3xl text-lg text-slate-300">
-          KAVIM is a fast-growing staffing solution company specializing in BPO, IT, and
-          Blue-collar segments. We partner with organizations to build reliable, high-performing
-          teams at speed.
-        </p>
+    <Page className="space-y-32">
+      <section className="enterprise-section relative overflow-hidden rounded-[2.5rem] px-6 sm:px-10 lg:px-14">
+        <img
+          src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=80"
+          alt="Leadership team background texture"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ opacity: 0.04, filter: 'grayscale(20%) sepia(20%)' }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-linear-to-br from-white via-white/95 to-white/85" />
+        <div className="relative">
+        <SectionHeader
+          eyebrow="About"
+          title="A recruitment partner built for reliability"
+          description="KAVIM is a staffing solutions company across BPO, IT, and industrial segments. We build high-performing teams through structured vetting, fast execution, and accountable delivery."
+        />
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          {[
+            {
+              title: 'Mission',
+              text: 'Build dependable teams that accelerate business growth through quality-first, human-centered recruitment.',
+            },
+            {
+              title: 'Vision',
+              text: 'Become the most trusted staffing partner for companies scaling in BPO, IT, and industrial operations.',
+            },
+            {
+              title: 'Value System',
+              text: 'Speed with accountability, transparent execution, and long-term relationship building across every engagement.',
+            },
+          ].map((card) => (
+            <Stagger key={card.title}>
+              <Reveal className="enterprise-card p-8">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-600">{card.title}</p>
+                <p className="mt-4 text-base leading-relaxed text-slate-600">{card.text}</p>
+              </Reveal>
+            </Stagger>
+          ))}
+        </div>
+        </div>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
-        <motion.form
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="rounded-2xl border border-white/10 bg-slate-900 p-7 sm:p-8"
-        >
-          <h2 className="text-3xl font-black uppercase text-white">Inquiry Portal</h2>
-          <p className="mt-2 text-slate-300">
-            Connect with our team to discuss workforce needs and opportunities.
-          </p>
+      <section className="enterprise-section enterprise-surface relative overflow-hidden rounded-[2.5rem] px-6 sm:px-10 lg:px-14">
+        <img
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=80"
+          alt="Corporate building background texture"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          style={{ opacity: 0.04, filter: 'grayscale(20%) sepia(20%)' }}
+          loading="lazy"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-slate-50/90" />
+        <div className="relative">
+        <SectionHeader
+          eyebrow="Contact"
+          title="Connect with our team"
+          description="Share your requirement and we’ll respond with next steps, timelines, and a delivery approach."
+        />
 
-          <div className="mt-6 grid gap-4">
-            <label className="text-sm font-medium text-slate-200">
-              Name
-              <input
-                type="text"
-                placeholder="John Doe"
-                className="mt-2 w-full rounded-lg border border-white/15 bg-slate-950 px-4 py-3 text-slate-100 outline-none ring-emerald-400 focus:ring-2"
-              />
-            </label>
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <Stagger>
+          <Reveal>
+          <form className="enterprise-card p-8 sm:p-10" onSubmit={(event) => event.preventDefault()}>
+            <p className="text-sm font-semibold text-slate-900">Inquiry portal</p>
+            <p className="mt-2 text-sm text-slate-600">
+              Tell us about your hiring needs or your next career move.
+            </p>
 
-            <label className="text-sm font-medium text-slate-200">
-              Organization
-              <input
-                type="text"
-                placeholder="Company Name"
-                className="mt-2 w-full rounded-lg border border-white/15 bg-slate-950 px-4 py-3 text-slate-100 outline-none ring-emerald-400 focus:ring-2"
-              />
-            </label>
+            <div className="mt-8 grid gap-5">
+              {[
+                { label: 'Name', placeholder: 'John Doe', type: 'text' },
+                { label: 'Organization', placeholder: 'Company Name', type: 'text' },
+                { label: 'Role', placeholder: 'Hiring Manager / HR / Candidate', type: 'text' },
+              ].map((field) => (
+                <label key={field.label} className="text-sm font-semibold text-slate-900">
+                  {field.label}
+                  <input
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none ring-emerald-200 focus:ring-4"
+                  />
+                </label>
+              ))}
 
-            <label className="text-sm font-medium text-slate-200">
-              Role
-              <input
-                type="text"
-                placeholder="Hiring Manager / HR / Candidate"
-                className="mt-2 w-full rounded-lg border border-white/15 bg-slate-950 px-4 py-3 text-slate-100 outline-none ring-emerald-400 focus:ring-2"
-              />
-            </label>
+              <label className="text-sm font-semibold text-slate-900">
+                Message
+                <textarea
+                  placeholder="Share your requirement..."
+                  rows={5}
+                  className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none ring-emerald-200 focus:ring-4"
+                />
+              </label>
 
-            <label className="text-sm font-medium text-slate-200">
-              Message
-              <textarea
-                placeholder="Share your requirement..."
-                rows={5}
-                className="mt-2 w-full rounded-lg border border-white/15 bg-slate-950 px-4 py-3 text-slate-100 outline-none ring-emerald-400 focus:ring-2"
-              />
-            </label>
-
-            <button
-              type="submit"
-              className="mt-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-emerald-400"
-            >
-              Submit Inquiry
-            </button>
-          </div>
-        </motion.form>
-
-        <motion.aside
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.08 }}
-          className="rounded-2xl border border-white/10 bg-slate-900 p-7 sm:p-8"
-        >
-          <h2 className="text-3xl font-black uppercase text-white">Get in Touch</h2>
-
-          <div className="mt-6 space-y-5 text-slate-300">
-            <div className="flex gap-3">
-              <Building2 className="mt-1 h-5 w-5 text-emerald-400" />
-              <p>
-                KAVIM Technologies Private Limited
-                <br />
-                FF 177, Plot No C-1, Gaur City Center, Gautam Buddha Nagar, Uttar Pradesh
-                - 201318, India.
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <MapPin className="mt-1 h-5 w-5 text-emerald-400" />
-              <p>India</p>
-            </div>
-            <div className="flex gap-3">
-              <PhoneCall className="mt-1 h-5 w-5 text-emerald-400" />
-              <a href="tel:01205162306" className="hover:text-emerald-400">
-                01205162306
-              </a>
-            </div>
-            <div className="flex gap-3">
-              <Mail className="mt-1 h-5 w-5 text-emerald-400" />
-              <a href="mailto:Info@kavimtechnologies.com" className="hover:text-emerald-400">
-                Info@kavimtechnologies.com
-              </a>
-            </div>
-            <div className="flex gap-3">
-              <Link className="mt-1 h-5 w-5 text-emerald-400" />
-              <a
-                href="https://www.linkedin.com/company/kavimtechnologies-pvt-ltd/"
-                target="_blank"
-                rel="noreferrer"
-                className="break-all hover:text-emerald-400"
+              <button
+                type="submit"
+                className="mt-2 inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-emerald-500/20 transition hover:bg-emerald-400"
               >
-                https://www.linkedin.com/company/kavimtechnologies-pvt-ltd/
-              </a>
+                Submit inquiry
+              </button>
             </div>
-          </div>
-        </motion.aside>
+          </form>
+          </Reveal>
+          </Stagger>
+
+          <Stagger>
+            <Reveal className="enterprise-card p-8 sm:p-10">
+              <p className="text-sm font-semibold text-slate-900">Get in touch</p>
+
+              <div className="mt-6 space-y-5 text-sm text-slate-600">
+                <div className="flex gap-3">
+                  <Building2 className="mt-0.5 h-5 w-5 text-emerald-600" />
+                  <p>
+                    KAVIM Technologies Private Limited
+                    <br />
+                    FF 177, Plot No C-1, Gaur City Center, Gautam Buddha Nagar, Uttar Pradesh
+                    - 201318, India.
+                  </p>
+                </div>
+                <div className="flex gap-3">
+                  <PhoneCall className="mt-0.5 h-5 w-5 text-emerald-600" />
+                  <a href="tel:01205162306" className="font-semibold text-slate-700 transition hover:text-emerald-700">
+                    01205162306
+                  </a>
+                </div>
+                <div className="flex gap-3">
+                  <Mail className="mt-0.5 h-5 w-5 text-emerald-600" />
+                  <a
+                    href="mailto:Info@kavimtechnologies.com"
+                    className="font-semibold text-slate-700 transition hover:text-emerald-700"
+                  >
+                    Info@kavimtechnologies.com
+                  </a>
+                </div>
+                <div className="flex gap-3">
+                  <Link className="mt-0.5 h-5 w-5 text-emerald-600" />
+                  <a
+                    href="https://www.linkedin.com/company/kavimtechnologies-pvt-ltd/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="break-all font-semibold text-slate-700 transition hover:text-emerald-700"
+                  >
+                    https://www.linkedin.com/company/kavimtechnologies-pvt-ltd/
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+          </Stagger>
+        </div>
+        </div>
       </section>
-    </div>
+      <HeadquartersSection />
+    </Page>
   )
 }
 
